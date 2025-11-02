@@ -1,17 +1,18 @@
-@import "tailwindcss";
+/* styles/globals.css */
 
+/* Import Tailwind CSS (this will include all your Tailwind utilities) */
+@import "tailwindcss";
+@config "../tailwind.config.js";  /* أو المسار المناسب لملفك */
+
+/* Define CSS Variables (Custom Properties) for Colors */
 :root {
   --background: #ffffff;
   --foreground: #171717;
-}
+  --font-sans: Arial, Helvetica, sans-serif;
+  --font-mono: "Courier New", Courier, monospace;
+ }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
+/* Define Dark Mode Variables */
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -19,8 +20,28 @@
   }
 }
 
+/* Apply the background and foreground color globally */
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans); /* Default to sans-serif for fallback */
+}
+ 
+@layer utilities {
+  .font-switzer {
+    font-family: var(--font-switzer), system-ui, sans-serif;
+  }
+  
+  /* Custom radial gradient utilities */
+  .bg-radial-gradient {
+    background: radial-gradient(circle at center, var(--tw-gradient-stops));
+  }
+  
+  .bg-radial-at-top {
+    background: radial-gradient(circle at top, var(--tw-gradient-stops));
+  }
+  
+  .bg-radial-at-bottom {
+    background: radial-gradient(circle at bottom, var(--tw-gradient-stops));
+  }
 }
