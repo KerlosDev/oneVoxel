@@ -46,22 +46,39 @@ const LogoRev = () => {
     { node: <SiBootstrap />, title: "Bootstrap", href: "https://getbootstrap.com" },
     { node: <SiMongodb />, title: "MongoDB", href: "https://www.mongodb.com" },
   ];
- 
+
 
   return (
-    <div style={{ height: '200px', position: 'relative', overflow: 'hidden' }}>
-      <LogoLoop
-        logos={techLogos}
-        speed={120}
-        direction="left"
-        logoHeight={48}
-        gap={40}
-        pauseOnHover
-        scaleOnHover
-        fadeOut
-        fadeOutColor="#000"
-        ariaLabel="Technology stack"
-      />
+    <div className="relative  bg-black pt-20 px-6">
+      <div className="max-w-7xl mx-auto">
+        {/* Section Header */}
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+            The Technology We Use to Build
+            <span className="bg-gradient-to-b from-voxel via-gray-300 to-gray-500 bg-clip-text text-transparent"> Your Solution</span>
+          </h2>
+          <p className="text-gray-400 text-lg md:text-xl leading-relaxed max-w-4xl mx-auto">
+            We leverage cutting-edge technologies and industry-leading frameworks to deliver
+            robust, scalable, and modern solutions that drive your business forward.
+          </p>
+        </div>
+
+        {/* Technology Logos */}
+        <div style={{ height: '200px', position: 'relative', overflow: 'hidden' }}>
+          <LogoLoop
+            logos={techLogos}
+            speed={120}
+            direction="left"
+            logoHeight={48}
+            gap={40}
+            pauseOnHover
+            scaleOnHover
+            fadeOut
+            fadeOutColor="#000"
+            ariaLabel="Technology stack"
+          />
+        </div>
+      </div>
     </div>
   )
 }
