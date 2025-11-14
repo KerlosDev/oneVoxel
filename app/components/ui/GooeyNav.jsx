@@ -1,4 +1,5 @@
 import { useRef, useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 const GooeyNav = ({
     items,
@@ -14,6 +15,7 @@ const GooeyNav = ({
     const navRef = useRef(null);
     const filterRef = useRef(null);
     const textRef = useRef(null);
+    const router = useRouter();
     const [activeIndex, setActiveIndex] = useState(initialActiveIndex);
 
     const noise = (n = 1) => n / 2 - Math.random() * n;
@@ -84,6 +86,7 @@ const GooeyNav = ({
         textRef.current.innerText = element.innerText;
     };
     const handleClick = (e, index) => {
+        e.preventDefault();
         const liEl = e.currentTarget;
         if (activeIndex === index) return;
         setActiveIndex(index);
@@ -100,6 +103,8 @@ const GooeyNav = ({
         if (filterRef.current) {
             makeParticles(filterRef.current);
         }
+        // Navigate to the new route
+        router.push(items[index].href);
     };
     const handleKeyDown = (e, index) => {
         if (e.key === 'Enter' || e.key === ' ') {
@@ -110,6 +115,10 @@ const GooeyNav = ({
             }
         }
     };
+    useEffect(() => {
+        setActiveIndex(initialActiveIndex);
+    }, [initialActiveIndex]);
+
     useEffect(() => {
         if (!navRef.current || !containerRef.current) return;
         const activeLi = navRef.current.querySelectorAll('li')[activeIndex];
@@ -273,7 +282,7 @@ const GooeyNav = ({
                     style={{ transform: 'translate3d(0,0,0.01px)' }}>
                     <ul
                         ref={navRef}
-                        className="flex gap-8 font-switzer list-none p-0 px-4 m-0 relative z-3"
+                        className="flex gap-2 font-switzer list-none p-0 px-4 m-0 relative z-3"
                         style={{
                             textShadow: '0 1px 1px hsl(205deg 30% 10% / 0.2)'
                         }}>
