@@ -5,7 +5,7 @@ const Blogs = () => {
         <div className="bg-black  text-white py-16 px-8">
             {/* Featured Section */}
             <div className="text-center mb-16">
-                <h2 className="text-4xl md:text-6xl font-bold text-gray-400 mb-4">
+                <h2 className="text-4xl md:text-6xl font-bold text-voxel mb-4">
                     Featured
                 </h2>
                 <div className="w-8 h-0.5 bg-gray-500 mx-auto"></div>
